@@ -17,16 +17,15 @@ export default function App() {
       .catch(error => console.error(error))
   }
 
-  const advanceTodo = id => {
-    const oldTodo = todos.find(todo => todo.id === id)
+  const advanceTodo = todo => {
     axios
-      .put('/api/todo/' + id, {
-        ...oldTodo,
-        status: getNextStatus(oldTodo.status),
+      .put('/api/todo/' + todo.id, {
+        ...todo,
+        status: getNextStatus(todo.status),
       })
       .then(response => response.data)
       .then(updatedTodo => {
-        setTodos(todos.map(todo => (todo.id === id ? updatedTodo : todo)))
+        setTodos(todos.map(item => (item.id === todo.id ? updatedTodo : item)))
       })
       .catch(error => console.error(error))
   }

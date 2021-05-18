@@ -6,9 +6,7 @@ export default function TodoItem({ todo, onAdvance, onRemove }) {
       <p>{todo.description}</p>
       <ButtonGroup>
         <button onClick={() => onRemove(todo.id)}>Delete</button>
-        {onAdvance && (
-          <button onClick={() => onAdvance(todo.id)}>Advance</button>
-        )}
+        {onAdvance && <button onClick={() => onAdvance(todo)}>Advance</button>}
       </ButtonGroup>
     </Todo>
   )
