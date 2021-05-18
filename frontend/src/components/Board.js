@@ -27,5 +27,7 @@ const Wrapper = styled.details`
   ul {
     list-style: none;
     padding: 0;
+    display: grid;
+    grid-gap: 24px;
   }
 `

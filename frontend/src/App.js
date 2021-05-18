@@ -8,6 +8,14 @@ import axios from 'axios'
 export default function App() {
   const [todos, setTodos] = useState([])
 
+  const addNewTodo = description => {
+    axios
+      .post('/api/todo', { description, status: 'OPEN' })
+      .then(response => response.data)
+      .then(newTodoItem => setTodos([...todos, newTodoItem]))
+      .catch(error => console.error(error))
+  }
+
   useEffect(() => {
     axios
       .get('/api/todo')
@@ -19,7 +27,7 @@ export default function App() {
   return (
     <Page>
       <Header />
-      <AddATodo />
+      <AddATodo onAddClick={addNewTodo} />
       <Main todos={todos} />
     </Page>
   )

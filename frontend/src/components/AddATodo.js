@@ -1,9 +1,22 @@
 import styled from 'styled-components/macro'
+import { useState } from 'react'
 
-export default function AddATodo() {
+export default function AddATodo({ onAddClick }) {
+  const [description, setDescription] = useState('')
+
+  const handeAddClick = () => {
+    onAddClick(description)
+    setDescription('')
+  }
+
   return (
     <Wrapper>
-      <input type="text" /> <button>Add</button>
+      <input
+        type="text"
+        value={description}
+        onChange={event => setDescription(event.target.value)}
+      />
+      <button onClick={handeAddClick}>Add</button>
     </Wrapper>
   )
 }
