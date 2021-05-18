@@ -1,14 +1,16 @@
 import styled from 'styled-components/macro'
-import Todo from './Todo'
+import TodoItem from './TodoItem'
 
-export default function Board({ todos, title, onDelete, onAdvance }) {
+export default function Board({ title, todos, onAdvance, onRemove }) {
   return (
-    <Wrapper>
-      <h2>{title}</h2>
+    <Wrapper open>
+      <summary>
+        <h2>{title}</h2>
+      </summary>
       <ul>
-        {todos.map((todo) => (
+        {todos.map(todo => (
           <li key={todo.id}>
-            <Todo todo={todo} onDelete={onDelete} onAdvance={onAdvance} />
+            <TodoItem todo={todo} onAdvance={onAdvance} onRemove={onRemove} />
           </li>
         ))}
       </ul>
@@ -16,11 +18,16 @@ export default function Board({ todos, title, onDelete, onAdvance }) {
   )
 }
 
-const Wrapper = styled.section`
+const Wrapper = styled.details`
+  h2 {
+    display: inline-block;
+    margin: 0;
+  }
+
   ul {
-    padding: 0;
     list-style: none;
+    padding: 0;
     display: grid;
-    grid-gap: 20px;
+    grid-gap: 24px;
   }
 `
