@@ -18,5 +18,6 @@ export default function Board({ title }) {
 const Wrapper = styled.details`
   h2 {
     display: inline-block;
+    margin: 0;
   }
 `
