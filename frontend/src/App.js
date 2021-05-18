@@ -31,6 +31,12 @@ export default function App() {
       .catch(error => console.error(error))
   }
 
+  const removeTodo = id => {
+    axios.delete('/api/todo/' + id).then(() => {
+      setTodos(todos.filter(todo => todo.id !== id))
+    })
+  }
+
   useEffect(() => {
     axios
       .get('/api/todo')
@@ -43,7 +49,7 @@ export default function App() {
     <Page>
       <Header />
       <AddATodo onAddClick={addNewTodo} />
-      <Main todos={todos} onAdvance={advanceTodo} />
+      <Main todos={todos} onAdvance={advanceTodo} onRemove={removeTodo} />
     </Page>
   )
 }

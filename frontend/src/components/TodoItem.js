@@ -1,11 +1,11 @@
 import styled from 'styled-components/macro'
 
-export default function TodoItem({ todo, onAdvance }) {
+export default function TodoItem({ todo, onAdvance, onRemove }) {
   return (
     <Todo>
       <p>{todo.description}</p>
       <ButtonGroup>
-        <button>Delete</button>
+        <button onClick={() => onRemove(todo.id)}>Delete</button>
         {onAdvance && (
           <button onClick={() => onAdvance(todo.id)}>Advance</button>
         )}

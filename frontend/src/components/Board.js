@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro'
 import TodoItem from './TodoItem'
 
-export default function Board({ title, todos, onAdvance }) {
+export default function Board({ title, todos, onAdvance, onRemove }) {
   return (
     <Wrapper open>
       <summary>
@@ -10,7 +10,7 @@ export default function Board({ title, todos, onAdvance }) {
       <ul>
         {todos.map(todo => (
           <li key={todo.id}>
-            <TodoItem todo={todo} onAdvance={onAdvance} />
+            <TodoItem todo={todo} onAdvance={onAdvance} onRemove={onRemove} />
           </li>
         ))}
       </ul>
