@@ -1,16 +1,19 @@
 import styled from 'styled-components/macro'
+import TodoItem from './TodoItem'
 
-export default function Board({ title }) {
+export default function Board({ title, todos }) {
   return (
-    <Wrapper>
+    <Wrapper open>
       <summary>
         <h2>{title}</h2>
       </summary>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
-        aliquam amet aperiam commodi dolorum eum id illo ipsa libero molestias,
-        nostrum obcaecati quo saepe sapiente tempore ullam, vel. Ducimus, sint.
-      </p>
+      <ul>
+        {todos.map(todo => (
+          <li key={todo.id}>
+            <TodoItem todo={todo} />
+          </li>
+        ))}
+      </ul>
     </Wrapper>
   )
 }
@@ -19,5 +22,10 @@ const Wrapper = styled.details`
   h2 {
     display: inline-block;
     margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
   }
 `
