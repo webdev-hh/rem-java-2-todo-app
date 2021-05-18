@@ -1,7 +1,13 @@
+import styled from 'styled-components/macro'
+
 export default function Header() {
   return (
-    <header>
+    <Wrapper>
       <h1>Super Kanban</h1>
-    </header>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.header`
+  text-align: center;
+`
