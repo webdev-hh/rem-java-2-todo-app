@@ -18,6 +18,15 @@ export default function App() {
                 <Header/>
                 <Navigation/>
                 <Switch>
+                    <Route path={["/","/home"]} exact>
+                        <AddATodo onAddClick={addNewTodo}/>
+                        <Boards
+                            openTodos={openTodos}
+                            inProgressTodos={inProgressTodos}
+                            doneTodos={doneTodos}
+                            onAdvance={advanceTodo}
+                            onRemove={removeTodo}/>
+                    </Route>
                     <Route path={"/todos/open"}>
                         <Main>
                         <Board
@@ -28,10 +37,27 @@ export default function App() {
                         />
                         </Main>
                     </Route>
-                    <Route path={"/"}>
-                        <AddATodo onAddClick={addNewTodo}/>
-                        <Boards openTodos={openTodos} inProgressTodos={inProgressTodos} doneTodos={doneTodos} onAdvance={advanceTodo} onRemove={removeTodo}/>
+                    <Route path={"/todos/doing"}>
+                        <Main>
+                            <Board
+                                title="Doing"
+                                todos={inProgressTodos}
+                                onAdvance={advanceTodo}
+                                onRemove={removeTodo}
+                            />
+                        </Main>
                     </Route>
+                    <Route path={"/todos/done"}>
+                        <Main>
+                            <Board
+                                title="Done"
+                                todos={doneTodos}
+                                onAdvance={advanceTodo}
+                                onRemove={removeTodo}
+                            />
+                        </Main>
+                    </Route>
+
                 </Switch>
             </Page>
         </Router>

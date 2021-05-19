@@ -10,7 +10,6 @@ export default function Navigation() {
             <NavLink to={"/todos/doing"}>Doing</NavLink>
             <NavLink to={"/todos/done"}>Done</NavLink>
         </Wrapper>
-
     )
 }
 

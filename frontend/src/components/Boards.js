@@ -1,5 +1,4 @@
 import Board from './Board'
-import styled from 'styled-components/macro'
 import PropTypes from "prop-types";
 import Main from "./Main";
 
