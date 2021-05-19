@@ -3,18 +3,19 @@ import TodoItem from './TodoItem'
 import PropTypes from 'prop-types'
 
 Board.propTypes = {
-    title: PropTypes.string.isRequired,
-    todos: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-        status: PropTypes.string.isRequired
-    })).isRequired,
-    onAdvance: PropTypes.func,
-    onRemove: PropTypes.func.isRequired
-
+  title: PropTypes.string.isRequired,
+  todos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      status: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  onAdvance: PropTypes.func,
+  onRemove: PropTypes.func.isRequired,
 }
 
-export default function Board({ title, todos, onAdvance, onRemove }) {
+export default function Board({ todos, title, onAdvance, onRemove }) {
   return (
     <Wrapper open>
       <summary>

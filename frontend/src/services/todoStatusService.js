@@ -4,4 +4,12 @@ const nextStatus = {
   DONE: 'DONE',
 }
 
+const slugStatus = {
+  open: 'OPEN',
+  doing: 'IN_PROGRESS',
+  done: 'DONE',
+}
+
 export const getNextStatus = status => nextStatus[status]
+
+export const slugToStatus = slug => slugStatus[slug]
