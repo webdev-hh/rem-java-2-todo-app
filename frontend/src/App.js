@@ -1,38 +1,30 @@
-import Page from './components/Page'
-import Header from './components/Header'
-import AddATodo from './components/AddATodo'
-import Boards from './components/Boards'
 import useTodos from './hooks/useTodos'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Navigation from './components/Navigation'
-import BoardPage from './components/BoardPage'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import BoardPage from './pages/BoardPage'
+import HomePage from './pages/HomePages'
 
 export default function App() {
   const { todos, advanceTodo, addNewTodo, removeTodo } = useTodos()
 
   return (
     <Router>
-      <Page>
-        <Header />
-        <Navigation />
-        <Switch>
-          <Route path={['/', '/home']} exact>
-            <AddATodo onAddClick={addNewTodo} />
-            <Boards
-              todos={todos}
-              onAdvance={advanceTodo}
-              onRemove={removeTodo}
-            />
-          </Route>
-          <Route path={'/todos/:status'}>
-            <BoardPage
-              todos={todos}
-              onAdvance={advanceTodo}
-              onRemove={removeTodo}
-            />
-          </Route>
-        </Switch>
-      </Page>
+      <Switch>
+        <Route path={['/', '/home']} exact>
+          <HomePage
+            todos={todos}
+            addNewTodo={addNewTodo}
+            removeTodo={removeTodo}
+            advanceTodo={advanceTodo}
+          />
+        </Route>
+        <Route path={'/todos/:status'}>
+          <BoardPage
+            todos={todos}
+            onAdvance={advanceTodo}
+            onRemove={removeTodo}
+          />
+        </Route>
+      </Switch>
     </Router>
   )
 }
