@@ -9,12 +9,10 @@ import BoardPage from './components/BoardPage'
 
 export default function App() {
   const {
+    todos,
     advanceTodo,
     addNewTodo,
     removeTodo,
-    openTodos,
-    inProgressTodos,
-    doneTodos,
     getTodosByStatus,
   } = useTodos()
 
@@ -26,17 +24,13 @@ export default function App() {
         <Switch>
           <Route path={['/', '/home']} exact>
             <AddATodo onAddClick={addNewTodo} />
-            <Boards
-              openTodos={openTodos}
-              inProgressTodos={inProgressTodos}
-              doneTodos={doneTodos}
+            <Boards todos ={todos}
               onAdvance={advanceTodo}
               onRemove={removeTodo}
             />
           </Route>
           <Route path={'/todos/:status'}>
-            <BoardPage
-              getTodosByStatus={getTodosByStatus}
+            <BoardPage todos={todos}
               onAdvance={advanceTodo}
               onRemove={removeTodo}
             />

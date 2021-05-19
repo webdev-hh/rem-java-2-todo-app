@@ -44,17 +44,12 @@ export default function useTodos() {
     return todos.filter(item => item.status === status)
   }
 
-  const openTodos = todos.filter(todo => todo.status === 'OPEN')
-  const inProgressTodos = todos.filter(todo => todo.status === 'IN_PROGRESS')
-  const doneTodos = todos.filter(todo => todo.status === 'DONE')
 
   return {
+    todos,
     advanceTodo,
     addNewTodo,
     removeTodo,
-    openTodos,
-    inProgressTodos,
-    doneTodos,
     getTodosByStatus,
   }
 }

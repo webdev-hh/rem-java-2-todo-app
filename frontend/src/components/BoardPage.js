@@ -4,20 +4,21 @@ import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { slugToStatus } from '../services/todoStatusService'
 
-export default function BoardPage({ getTodosByStatus, onAdvance, onRemove }) {
-  const [todos, setTodos] = useState([])
+export default function BoardPage({ todos, onAdvance, onRemove }) {
+  const [filteredTodos, setFilteredTodos] = useState([])
   const { status } = useParams()
   const statusType = slugToStatus(status)
 
+
   useEffect(() => {
-    setTodos(getTodosByStatus(statusType))
-  }, [status])
+    setFilteredTodos(todos.filter(item => item.status === statusType))
+  }, [status, todos])
 
   return (
     <Main>
       <Board
         title="Todo"
-        todos={todos}
+        todos={filteredTodos}
         onAdvance={onAdvance}
         onRemove={onRemove}
       />
