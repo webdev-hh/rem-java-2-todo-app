@@ -13,6 +13,3 @@ const slugStatus = {
 export const getNextStatus = status => nextStatus[status]
 
 export const slugToStatus = slug => slugStatus[slug]
-
-
-
