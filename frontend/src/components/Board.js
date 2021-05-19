@@ -14,21 +14,23 @@ Board.propTypes = {
 
 }
 
-export default function Board({ title, todos, onAdvance, onRemove }) {
-  return (
-    <Wrapper open>
-      <summary>
-        <h2>{title}</h2>
-      </summary>
-      <ul>
-        {todos.map(todo => (
-          <li key={todo.id}>
-            <TodoItem todo={todo} onAdvance={onAdvance} onRemove={onRemove} />
-          </li>
-        ))}
-      </ul>
-    </Wrapper>
-  )
+export default function Board({todos, title, onAdvance, onRemove}) {
+
+
+    return (
+        <Wrapper open>
+            <summary>
+                <h2>{title}</h2>
+            </summary>
+            <ul>
+                {todos.map(todo => (
+                    <li key={todo.id}>
+                        <TodoItem todo={todo} onAdvance={onAdvance} onRemove={onRemove}/>
+                    </li>
+                ))}
+            </ul>
+        </Wrapper>
+    )
 }
 
 const Wrapper = styled.details`

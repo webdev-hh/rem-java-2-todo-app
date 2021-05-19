@@ -5,12 +5,11 @@ import Boards from './components/Boards'
 import useTodos from "./hooks/useTodos";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Navigation from "./components/Navigation";
-import Board from "./components/Board";
-import Main from "./components/Main";
+import BoardPage from "./components/BoardPage";
 
 export default function App() {
 
-    const { advanceTodo, addNewTodo, removeTodo, openTodos, inProgressTodos, doneTodos} = useTodos();
+    const {advanceTodo, addNewTodo, removeTodo, openTodos, inProgressTodos, doneTodos, getTodosByStatus} = useTodos();
 
     return (
         <Router>
@@ -18,7 +17,7 @@ export default function App() {
                 <Header/>
                 <Navigation/>
                 <Switch>
-                    <Route path={["/","/home"]} exact>
+                    <Route path={["/", "/home"]} exact>
                         <AddATodo onAddClick={addNewTodo}/>
                         <Boards
                             openTodos={openTodos}
@@ -27,35 +26,11 @@ export default function App() {
                             onAdvance={advanceTodo}
                             onRemove={removeTodo}/>
                     </Route>
-                    <Route path={"/todos/open"}>
-                        <Main>
-                        <Board
-                            title="Todo"
-                            todos={openTodos}
-                            onAdvance={advanceTodo}
-                            onRemove={removeTodo}
+                    <Route path={"/todos/:status"}>
+                        <BoardPage getTodosByStatus={getTodosByStatus}
+                                   onAdvance={advanceTodo}
+                                   onRemove={removeTodo}
                         />
-                        </Main>
-                    </Route>
-                    <Route path={"/todos/doing"}>
-                        <Main>
-                            <Board
-                                title="Doing"
-                                todos={inProgressTodos}
-                                onAdvance={advanceTodo}
-                                onRemove={removeTodo}
-                            />
-                        </Main>
-                    </Route>
-                    <Route path={"/todos/done"}>
-                        <Main>
-                            <Board
-                                title="Done"
-                                todos={doneTodos}
-                                onAdvance={advanceTodo}
-                                onRemove={removeTodo}
-                            />
-                        </Main>
                     </Route>
 
                 </Switch>

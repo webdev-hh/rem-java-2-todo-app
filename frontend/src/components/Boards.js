@@ -25,6 +25,7 @@ Boards.propTypes = {
 
 export default function Boards({ onAdvance, onRemove, openTodos, inProgressTodos, doneTodos }) {
 
+
   return (
     <Main>
       <Board
