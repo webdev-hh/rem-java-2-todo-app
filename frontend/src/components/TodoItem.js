@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 TodoItem.propTypes = {
   todo: PropTypes.shape({
@@ -15,9 +16,12 @@ export default function TodoItem({ todo, onAdvance, onRemove }) {
   return (
     <Todo>
       <p>{todo.description}</p>
+      <Link to={'/todo/' + todo.id}>Details page</Link>
       <ButtonGroup>
         <button onClick={() => onRemove(todo.id)}>Delete</button>
-        {onAdvance && <button onClick={() => onAdvance(todo)}>Advance</button>}
+        {todo.status !== 'DONE' && (
+          <button onClick={() => onAdvance(todo)}>Advance</button>
+        )}
       </ButtonGroup>
     </Todo>
   )
